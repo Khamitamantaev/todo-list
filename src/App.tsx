@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Loading from './components/Loading';
 import axios from 'axios';
+import TodoList from './components/TodoList';
 export default function App()   
 {
     const [todos, setTodos] = useState(null)
@@ -11,5 +12,5 @@ export default function App()
             setTodos(response.data)
         } )
     }, [])
-    return <div>{todos ? <div>todos</div>: <Loading/>}</div>
+    return <div>{todos ? <TodoList/>: <Loading/>}</div>
 }
