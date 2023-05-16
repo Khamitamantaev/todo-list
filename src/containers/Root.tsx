@@ -11,7 +11,6 @@ export const Root = () => (
             </div>
             <div className="col">
                 <AddTodo />
-
             </div>
         </div>
 

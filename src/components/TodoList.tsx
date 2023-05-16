@@ -7,6 +7,8 @@ import { filteredTodoListState, todoListFilterState, todosState } from "../store
 const TodoList = () => {
   const [todos, setTodos] = useRecoilState(todosState);
   const todoList = useRecoilValue(filteredTodoListState);
+  const filter = useRecoilValue(todoListFilterState);
+
   const toggleTodo = (id: number) =>
     setTodos(
       todoList.map((todo) => {
@@ -34,7 +36,7 @@ const TodoList = () => {
             </tr>
           </thead>
           <tbody>
-            {todoList.map((todo) => (
+            {todos.map((todo) => (
               <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} removeTodo={removeTodo} />
             ))}
           </tbody>
