@@ -1,6 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { useRecoilState } from 'recoil'
-import { todosState } from '../store'
 
 type Props = {
     todo: {
@@ -14,9 +12,6 @@ type Props = {
 }
 
 const Todo: FunctionComponent<Props> = ({ todo, toggleTodo, removeTodo }) => {
-
-
-
     return (
         <tr key={todo.id}>
             <td>{todo.title}</td>
