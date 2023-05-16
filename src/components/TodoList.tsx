@@ -1,15 +1,15 @@
 
 import React from "react";
 import Todo from "./Todo";
-import { useRecoilState } from "recoil";
-import { todosState } from "../store";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { filteredTodoListState, todoListFilterState, todosState } from "../store";
 
 const TodoList = () => {
   const [todos, setTodos] = useRecoilState(todosState);
-
+  const todoList = useRecoilValue(filteredTodoListState);
   const toggleTodo = (id: number) =>
     setTodos(
-      todos.map((todo) => {
+      todoList.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -20,7 +20,7 @@ const TodoList = () => {
       })
     );
   const removeTodo = (id: number) =>
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos(todoList.filter((todo) => todo.id !== id));
 
   return (
     <>
@@ -34,7 +34,7 @@ const TodoList = () => {
             </tr>
           </thead>
           <tbody>
-            {todos.map((todo) => (
+            {todoList.map((todo) => (
               <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} removeTodo={removeTodo} />
             ))}
           </tbody>
@@ -45,26 +45,3 @@ const TodoList = () => {
 };
 
 export default TodoList;
-// import React, { FunctionComponent } from 'react'
-// import Todo from './Todo'
-
-// type Props = {
-//   todos: {
-//     id: number,
-//     title: string,
-//     body: string,
-//     userId: number
-//   }[]
-// }
-
-// const TodoList: FunctionComponent<Props> = ({ todos }) => {
-//   return (
-//     <ul className="list-group">
-//       {todos.map(todo => (
-//         <Todo key={todo.id} todo={todo}/>
-//       ))}
-//     </ul>
-//   )
-// }
-
-// export default TodoList

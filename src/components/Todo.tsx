@@ -12,6 +12,7 @@ type Props = {
 }
 
 const Todo: FunctionComponent<Props> = ({ todo, toggleTodo, removeTodo }) => {
+
     return (
         <tr key={todo.id}>
             <td>{todo.title}</td>

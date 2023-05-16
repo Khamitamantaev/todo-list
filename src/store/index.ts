@@ -12,6 +12,11 @@ export const todosState = atom({
     default: [] as Todo[],
 });
 
+export const todoListFilterState = atom({
+    key: "todoListFilterState",
+    default: "Show All"
+});
+
 export const infoValue = selector({
     key: "infoValue",
     get: ({ get }) => ({
@@ -20,3 +25,20 @@ export const infoValue = selector({
         notCompleted: get(todosState).filter((todo) => !todo.completed).length,
     }),
 });
+
+export const filteredTodoListState = selector({
+    key: "filteredTodoListState",
+    get: ({ get }) => {
+      const filter = get(todoListFilterState);
+      const list = get(todosState);
+  
+      switch (filter) {
+        case "Show Completed":
+          return list.filter((item) => item.completed);
+        case "Show Uncompleted":
+          return list.filter((item) => !item.completed);
+        default:
+          return list;
+      }
+    }
+  });
