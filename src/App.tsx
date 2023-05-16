@@ -1,6 +1,8 @@
 import React from 'react';
-
-export default function App()
+import { useState } from 'react';
+import Loading from './components/Loading';
+export default function App()   
 {
-    return <h1>Todo Application will be here Khamit!</h1>
+    const [todos, setTodos] = useState([])
+    return <div><Loading/></div>
 }

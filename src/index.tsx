@@ -2,5 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import {
+    RecoilRoot,
+  } from 'recoil';  
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+import "bootstrap/dist/css/bootstrap.min.css"
+
+ReactDOM.render(<RecoilRoot><App /></RecoilRoot>, document.querySelector('#root'));
