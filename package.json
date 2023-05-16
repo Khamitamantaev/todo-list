@@ -1,0 +1,36 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "Build Todo List application for test",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server --mode=development",
+    "prod": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khamitamantaev/todo-list.git"
+  },
+  "keywords": [],
+  "author": "Amantaev Khamit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Khamitamantaev/todo-list/issues"
+  },
+  "homepage": "https://github.com/Khamitamantaev/todo-list#readme",
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "html-webpack-plugin": "^5.5.1",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "source-map-loader": "^4.0.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  }
+}
