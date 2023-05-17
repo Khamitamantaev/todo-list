@@ -11,7 +11,7 @@ function TodoListFilters() {
     };
 
     return (
-        <div style={{ marginTop: 50 }}>
+        <div style={{ marginTop: 22 }}>
             Filter:
             <select value={filter} onChange={updateFilter} className="form-select" aria-label="Default select example">
                 <option value="Show All">All</option>
