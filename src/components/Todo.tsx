@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import { useRecoilState } from 'recoil'
+import { todosState } from '../store'
 
 type Props = {
     todo: {
@@ -6,12 +8,26 @@ type Props = {
         title: string,
         userId: number,
         completed: boolean
-    },
-    toggleTodo: Function,
-    removeTodo: Function
+    }
 }
 
-const Todo: FunctionComponent<Props> = ({ todo, toggleTodo, removeTodo }) => {
+const Todo: FunctionComponent<Props> = ({ todo }) => {
+
+    const [todos, setTodos] = useRecoilState(todosState);
+    const toggleTodo = (id: number) =>
+        setTodos(todos.map((todo) => {
+            if (todo.id === id) {
+                return {
+                    ...todo,
+                    completed: !todo.completed,
+                };
+            }
+            return todo;
+        })
+        );
+
+    const removeTodo = (id: number) =>
+        setTodos(todos.filter((todo) => todo.id !== id));
 
     return (
         <tr key={todo.id}>
