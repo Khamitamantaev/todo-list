@@ -8,8 +8,6 @@ import { todosState } from './store';
 export default function App()   
 {
     const [todos, setTodos] = useRecoilState(todosState)
-  
-
     useEffect(() => {
         axios.get("https://jsonplaceholder.typicode.com/todos").then((response) => { 
             setTodos(response.data)
