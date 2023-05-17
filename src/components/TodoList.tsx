@@ -9,7 +9,7 @@ const TodoList = () => {
   const todoList = useRecoilValue(filteredTodoListState);
 
   const toggleTodo = (id: number) =>
-    setTodos(todoList.map((todo) => {
+    setTodos(todos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -21,7 +21,7 @@ const TodoList = () => {
     );
 
   const removeTodo = (id: number) =>
-    setTodos(todoList.filter((todo) => todo.id !== id));
+    setTodos(todos.filter((todo) => todo.id !== id));
 
   return (
     <>
