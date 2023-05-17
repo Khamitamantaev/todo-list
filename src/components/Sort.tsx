@@ -27,6 +27,15 @@ const SortTodo = () => {
                 >
                     Sort Todo By Title
                 </button>
+                <button
+                    className="btn btn-primary"
+                    onClick={(_) => {
+                        const arrCopy = [...todos];
+                        setTodos(arrCopy.sort((a, b) => a.id - b.id))
+                    }}
+                >
+                    Sort Todo By ID
+                </button>
             </div>
         </>
     );
