@@ -1,6 +1,17 @@
 import React from 'react';
-
-export default function App()
+import { useEffect } from 'react';
+import Loading from './components/Loading';
+import axios from 'axios';
+import { Root } from './containers/Root';
+import { useRecoilState } from 'recoil';
+import { todosState } from './store';
+export default function App()   
 {
-    return <h1>Todo Application will be here Khamit!</h1>
+    const [todos, setTodos] = useRecoilState(todosState)
+    useEffect(() => {
+        axios.get("https://jsonplaceholder.typicode.com/todos").then((response) => { 
+            setTodos(response.data)
+        } )
+    }, [])
+    return <div>{todos ? <Root/>: <Loading/>}</div>
 }

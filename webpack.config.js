@@ -16,6 +16,10 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: '/node_modules/'
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ],
     },
@@ -25,7 +29,7 @@ module.exports = {
     },
     plugins: [
         new plugin({
-            template: path.resolve( __dirname, 'public/index.html' ),
+            template: path.resolve(__dirname, 'public/index.html'),
             filename: 'index.html'
         })
     ]
