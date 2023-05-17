@@ -14,7 +14,6 @@ type Props = {
 const Todo: FunctionComponent<Props> = ({ todo }) => {
     const [edit, setEdit] = useState(false)
     const [todos, setTodos] = useRecoilState(todosState);
-    const index = todos.findIndex((todoItem) => todoItem === todo);
     const toggleTodo = (id: number) =>
         setTodos(todos.map((todo) => {
             if (todo.id === id) {

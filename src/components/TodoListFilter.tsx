@@ -1,12 +1,11 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import { todoListFilterState, todosState } from "../store";
+import { todoListFilterState } from "../store";
 
 function TodoListFilters() {
     const [filter, setFilter] = useRecoilState(todoListFilterState);
 
     const updateFilter = ({ target: { value } }: any) => {
-        // console.log(value)
         setFilter(value);
     };
 
