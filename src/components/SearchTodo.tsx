@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
-import { todosState } from "../store";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { searchTodoListFilterState, searchTodoListState, todosState } from "../store";
 
 const SearchTodo = () => {
-  const [title, setTitle] = useState("");
-  const [todos, setTodos] = useRecoilState(todosState)
+  const todoList = useRecoilValue(searchTodoListState)
+  const [title, setTitle] = useRecoilState(searchTodoListFilterState)
 
   return (
     <>
-      <div className="form-group" style={{ marginTop: 46}}>
+      <div className="form-group" style={{ marginTop: 20}}>
+        Search
         <input
           className="form-control"
           type="text"
@@ -16,16 +17,6 @@ const SearchTodo = () => {
           placeholder="Search title..."
           onChange={(e) => setTitle(e.target.value)}
         />
-      </div>
-      <div className="form-group">
-        <button
-          className="btn btn-primary"
-          onClick={(_) => {
-            setTodos(todos.filter(todo => todo.title === title))
-          }}
-        >
-          Search Todo
-        </button>
       </div>
     </>
   );

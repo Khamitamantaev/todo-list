@@ -17,6 +17,11 @@ export const todoListFilterState = atom({
   default: "Show All"
 });
 
+export const searchTodoListFilterState = atom({
+  key: "searchTodoListFilterState",
+  default: ""
+});
+
 export const infoValue = selector({
   key: "infoValue",
   get: ({ get }) => ({
@@ -31,6 +36,12 @@ export const filteredTodoListState = selector({
   get: ({ get }) => {
     const filter = get(todoListFilterState);
     const list = get(todosState);
+    const search = get(searchTodoListFilterState)
+    
+    if(search) {
+      return list.filter((todo) => todo.title === search);
+    }
+
     switch (filter) {
       case "Show All":
         return list
@@ -41,5 +52,14 @@ export const filteredTodoListState = selector({
       default:
         return list
     }
+  }
+});
+
+export const searchTodoListState = selector({
+  key: "searchTodoListState",
+  get: ({ get }) => {
+    const search = get(searchTodoListFilterState);
+    const list = get(todosState);
+    return list.filter((todo) => todo.title === search);
   }
 });
