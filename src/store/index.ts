@@ -31,15 +31,15 @@ export const filteredTodoListState = selector({
   get: ({ get }) => {
     const filter = get(todoListFilterState);
     const list = get(todosState);
-    if (filter === "Show All") {
-      return list
+    switch (filter) {
+      case "Show All":
+        return list
+      case "Show Completed":
+        return list.filter((item) => item.completed);
+      case "Show Uncompleted":
+        return list.filter((item) => !item.completed);
+      default:
+        return list
     }
-    if (filter === "Show Completed") {
-      return list.filter((item) => item.completed);
-    }
-    if (filter === "Show Uncompleted") {
-      return list.filter((item) => !item.completed);
-    }
-    return list
   }
 });
