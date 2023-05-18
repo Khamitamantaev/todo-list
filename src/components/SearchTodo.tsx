@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { searchTodoListFilterState, searchTodoListState, todosState } from "../store";
+import React from "react";
+import { useRecoilState} from "recoil";
+import { searchTodoListFilterState } from "../store";
 
 const SearchTodo = () => {
-  const todoList = useRecoilValue(searchTodoListState)
   const [title, setTitle] = useRecoilState(searchTodoListFilterState)
 
   return (
