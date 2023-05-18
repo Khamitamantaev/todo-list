@@ -17,6 +17,11 @@ export const todoListFilterState = atom({
   default: "Show All"
 });
 
+export const searchTodoListFilterState = atom({
+  key: "searchTodoListFilterState",
+  default: ""
+});
+
 export const infoValue = selector({
   key: "infoValue",
   get: ({ get }) => ({
@@ -31,15 +36,30 @@ export const filteredTodoListState = selector({
   get: ({ get }) => {
     const filter = get(todoListFilterState);
     const list = get(todosState);
-    if (filter === "Show All") {
-      return list
+    const search = get(searchTodoListFilterState)
+    
+    if(search) {
+      return list.filter((todo) => todo.title === search);
     }
-    if (filter === "Show Completed") {
-      return list.filter((item) => item.completed);
+
+    switch (filter) {
+      case "Show All":
+        return list
+      case "Show Completed":
+        return list.filter((item) => item.completed);
+      case "Show Uncompleted":
+        return list.filter((item) => !item.completed);
+      default:
+        return list
     }
-    if (filter === "Show Uncompleted") {
-      return list.filter((item) => !item.completed);
-    }
-    return list
+  }
+});
+
+export const searchTodoListState = selector({
+  key: "searchTodoListState",
+  get: ({ get }) => {
+    const search = get(searchTodoListFilterState);
+    const list = get(todosState);
+    return list.filter((todo) => todo.title === search);
   }
 });
